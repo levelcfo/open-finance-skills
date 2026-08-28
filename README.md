@@ -1,6 +1,8 @@
-# Level Open Finance Systems
+# Level Open Finance
 
 Local development companion for Level's public finance checks. This preview contains synthetic examples only and is not published or licensed for redistribution yet.
+
+The repository contains one unified catalog of 20 installable finance skills. Each `skills/<name>/SKILL.md` teaches an AI agent when to use the capability, the evidence it must require, and where final human finance judgment remains mandatory. `examples/index.json` contains invented inputs and expected results for every skill.
 
 ## What belongs here
 

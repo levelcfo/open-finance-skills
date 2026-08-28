@@ -1,0 +1,22 @@
+{
+  "reconcile-account":{"input":{"bankAmount":12480,"ledgerAmount":12840},"expected":{"variance":-360,"status":"review"}},
+  "duplicate-billing":{"input":{"records":["AP-881","AP-914"],"sameInvoiceNumber":true},"expected":{"probableDuplicate":true,"status":"review"}},
+  "revenue-leakage-review":{"input":{"completedValue":6400,"invoice":null},"expected":{"unbilledCandidate":6400,"status":"review"}},
+  "spend-concentration-review":{"input":{"topVendorSpend":72000,"totalSpend":120000},"expected":{"topVendorShare":0.6,"status":"review"}},
+  "margin-trend-review":{"input":{"priorRevenue":100000,"priorCost":60000,"currentRevenue":110000,"currentCost":71500},"expected":{"priorMargin":0.4,"currentMargin":0.35,"changePoints":-5,"status":"review"}},
+  "cost-detail-footing":{"input":{"detail":[3000,2000],"controlTotal":5100},"expected":{"detailTotal":5000,"variance":-100,"status":"review"}},
+  "vendor-1099-readiness":{"input":{"payments":1200,"taxId":null},"expected":{"missingFields":["taxId"],"status":"review"}},
+  "monthly-value-summary":{"input":{"revenueChange":10000,"marginChangePoints":-5,"cashChange":-10000},"expected":{"findingCount":3,"status":"review"}},
+  "monthly-variance-review":{"input":{"actual":18400,"budget":12000},"expected":{"variance":6400,"variancePct":0.5333,"status":"review"}},
+  "recurring-subscription-review":{"input":{"monthlyCharges":[1250,790,240]},"expected":{"monthlySpend":2280,"annualizedSpend":27360,"status":"review"}},
+  "idle-cash-interest-review":{"input":{"observedCash":620000,"buffer":200000,"illustrativeYield":0.04},"expected":{"illustrativeEligibleBalance":420000,"illustrativeAnnualInterest":16800,"status":"review"}},
+  "cash-flow-forecast":{"input":{"managementBuffer":100000,"weeklyEndingCash":[193000,168000,156000,121000,83000,98000]},"expected":{"lowestCash":83000,"belowBuffer":17000,"status":"review"}},
+  "ar-integrity-review":{"input":{"invoiceTotal":12000,"payments":9500,"workflowStatus":"closed"},"expected":{"computedBalance":2500,"statusConflict":true,"status":"review"}},
+  "cost-rationalization-review":{"input":{"annualizedCandidates":[24000,18000]},"expected":{"reviewPool":42000,"confirmedSavings":0,"status":"review"}},
+  "vendor-rule-audit":{"input":{"transactions":84,"overrides":19},"expected":{"overrideRate":0.2262,"stable":false,"status":"review"}},
+  "remittance-matching-review":{"input":{"remittanceAmount":18750,"depositAmount":18625},"expected":{"variance":125,"match":"partial","status":"review"}},
+  "customer-margin-attribution":{"input":{"directLabor":180000,"attributedLabor":126000},"expected":{"unattributedLabor":54000,"coverage":0.7,"status":"review"}},
+  "month-end-close-preview":{"input":{"blocked":2,"unknown":1,"ready":1},"expected":{"closeReady":false,"status":"blocked"}},
+  "cfo-chart-pack":{"input":{"cash":[180000,132000,86000],"periodTypes":["actual","actual","forecast"]},"expected":{"lowestCash":86000,"seriesCount":1,"status":"review"}},
+  "categorization-history-health":{"input":{"transactions":62,"consistent":38},"expected":{"consistency":0.6129,"automationReady":false,"status":"review"}}
+}

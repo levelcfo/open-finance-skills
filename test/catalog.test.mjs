@@ -1,0 +1,26 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { existsSync, readFileSync } from "node:fs";
+import { capabilities, examples } from "../src/catalog.mjs";
+
+test("one manifest owns twenty unique finance skills", () => {
+  assert.equal(capabilities.length, 20);
+  assert.equal(new Set(capabilities.map(({ slug }) => slug)).size, 20);
+  assert.deepEqual(Object.keys(examples).sort(), capabilities.map(({ slug }) => slug).sort());
+});
+
+test("every skill is installable and every example preserves the human boundary", () => {
+  for (const capability of capabilities) {
+    const path = new URL(`../skills/${capability.slug}/SKILL.md`, import.meta.url);
+    assert.ok(existsSync(path), `${capability.slug} has no SKILL.md`);
+    const skill = readFileSync(path, "utf8");
+    assert.match(skill, /^---\nname: [a-z0-9-]+\ndescription: .+\n---\n/);
+    assert.ok(skill.includes(`name: ${capability.slug}\n`), `${capability.slug} frontmatter name drifted`);
+    assert.match(skill, /human|reviewer|finance professional|controller|qualified tax|CFO review/i, `${capability.slug} omits human review`);
+    assert.ok(examples[capability.slug].input && examples[capability.slug].expected, `${capability.slug} lacks a complete synthetic example`);
+  }
+});
+
+test("new concepts remain visibly preview until deterministic public runners exist", () => {
+  assert.deepEqual(capabilities.filter(({ status }) => status === "preview").map(({ slug }) => slug), ["monthly-variance-review", "idle-cash-interest-review", "cash-flow-forecast"]);
+});

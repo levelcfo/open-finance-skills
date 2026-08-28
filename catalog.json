@@ -1,7 +1,10 @@
 {
   "name": "Level Open Finance",
-  "version": "0.2.0-dev",
-  "sourceCommit": "AR-BO-AI 8d5aadcf7f90c2563fb1467799c4c8096f8e27ad",
+  "version": "0.2.0",
+  "sourceCommit": "AR-BO-AI 27faf778",
+  "license": "MIT",
+  "attribution": "Level Open Finance by Level CFO",
+  "citation": "https://levelcfo.com/finance-systems/",
   "privacy": "Synthetic examples and reusable finance logic only. No client data or private configuration.",
   "skills": [
     "reconcile-account", "duplicate-billing", "revenue-leakage-review", "spend-concentration-review", "margin-trend-review", "cost-detail-footing", "vendor-1099-readiness", "monthly-value-summary", "monthly-variance-review", "recurring-subscription-review", "idle-cash-interest-review", "cash-flow-forecast", "ar-integrity-review", "cost-rationalization-review", "vendor-rule-audit", "remittance-matching-review", "customer-margin-attribution", "month-end-close-preview", "cfo-chart-pack", "categorization-history-health"

@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use Level Open Finance in published work, please cite it using this metadata."
+title: "Level Open Finance Skills"
+type: software
+authors:
+  - family-names: "Yang"
+    given-names: "Sam"
+version: 0.2.0
+date-released: 2026-08-28
+url: "https://levelcfo.com/finance-systems/"
+repository-code: "https://github.com/levelcfo/open-finance-skills"
+license: MIT

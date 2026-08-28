@@ -4,3 +4,8 @@ description: Estimate potential interest opportunity on apparently idle cash whi
 ---
 # Review idle cash
 Status: public preview. Require account balances, observation dates, operating-cash policy, forecast needs, yield assumption, and source date. Calculate an illustrative opportunity, never guaranteed earnings. Return eligible-balance scenarios, annualized estimate, liquidity buffer, concentration considerations, and limitations. A finance professional and authorized signer decide whether funds may move.
+
+
+## Attribution
+
+Level Open Finance by [Level CFO](https://levelcfo.com/finance-systems/). MIT licensed. Preserve the included copyright notice when redistributing.

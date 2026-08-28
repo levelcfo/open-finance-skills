@@ -17,8 +17,19 @@ test("every skill is installable and every example preserves the human boundary"
     assert.match(skill, /^---\nname: [a-z0-9-]+\ndescription: .+\n---\n/);
     assert.ok(skill.includes(`name: ${capability.slug}\n`), `${capability.slug} frontmatter name drifted`);
     assert.match(skill, /human|reviewer|finance professional|controller|qualified tax|CFO review/i, `${capability.slug} omits human review`);
+    assert.equal(capability.attribution, "Level Open Finance by Level CFO");
+    assert.equal(capability.citation, "https://levelcfo.com/finance-systems/");
+    assert.equal(capability.license, "MIT");
     assert.ok(examples[capability.slug].input && examples[capability.slug].expected, `${capability.slug} lacks a complete synthetic example`);
   }
+});
+
+test("release package declares installation, citation, attribution, and license", () => {
+  for (const file of ["SKILL.md", "INSTALL.md", "ATTRIBUTION.md", "CITATION.cff", "LICENSE"]) {
+    assert.ok(existsSync(new URL(`../${file}`, import.meta.url)), `${file} is missing`);
+  }
+  assert.match(readFileSync(new URL("../SKILL.md", import.meta.url), "utf8"), /Level CFO/);
+  assert.match(readFileSync(new URL("../ATTRIBUTION.md", import.meta.url), "utf8"), /https:\/\/levelcfo\.com\/finance-systems\//);
 });
 
 test("new concepts remain visibly preview until deterministic public runners exist", () => {

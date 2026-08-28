@@ -1,6 +1,6 @@
 # Level Open Finance
 
-Local development companion for Level's public finance checks. This preview contains synthetic examples only and is not published or licensed for redistribution yet.
+An installable package of Level's public finance checks. It contains synthetic examples only and is licensed under MIT for reuse and redistribution with the included copyright notice.
 
 The repository contains one unified catalog of 20 installable finance skills. Each `skills/<name>/SKILL.md` teaches an AI agent when to use the capability, the evidence it must require, and where final human finance judgment remains mandatory. `examples/index.json` contains invented inputs and expected results for every skill.
 
@@ -13,7 +13,9 @@ The repository contains one unified catalog of 20 installable finance skills. Ea
 
 Open source does not mean open client data. Client records, workpapers, credentials, communications, and private configurations do not belong in this repository.
 
-Run `npm test`, then `npm run dev`. The local MCP endpoint is `http://127.0.0.1:8788/mcp`.
+Read `INSTALL.md` for Codex, Claude Code, other agents, and MCP setup. Run `npm test`, then `npm run release` to create the complete ZIP bundle. The local MCP endpoint is `http://127.0.0.1:8788/mcp`.
+
+Level Open Finance was developed by [Level CFO](https://levelcfo.com/finance-systems/). Preserve `LICENSE` and `ATTRIBUTION.md` when redistributing the package. Public citation and a source backlink are appreciated, not required for ordinary use.
 
 ## How to use a capability
 

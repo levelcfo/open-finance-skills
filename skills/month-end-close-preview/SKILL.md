@@ -8,4 +8,4 @@ Require a named entity and month. Check source freshness, account reconciliation
 
 ## Attribution
 
-Level Open Finance by [Level CFO](https://levelcfo.com/finance-systems/). MIT licensed. Preserve the included copyright notice when redistributing.
+Level Open Finance by [Level](https://levelcfo.com/finance-systems/). MIT licensed. Preserve the included copyright notice when redistributing.

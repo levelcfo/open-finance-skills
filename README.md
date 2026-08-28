@@ -15,7 +15,7 @@ Open source does not mean open client data. Client records, workpapers, credenti
 
 Read `INSTALL.md` for Codex, Claude Code, other agents, and MCP setup. Run `npm test`, then `npm run release` to create the complete ZIP bundle. The local MCP endpoint is `http://127.0.0.1:8788/mcp`.
 
-Level Open Finance was developed by [Level CFO](https://levelcfo.com/finance-systems/). Preserve `LICENSE` and `ATTRIBUTION.md` when redistributing the package. Public citation and a source backlink are appreciated, not required for ordinary use.
+Level Open Finance was developed by [Level](https://levelcfo.com/finance-systems/). Preserve `LICENSE` and `ATTRIBUTION.md` when redistributing the package. Public citation and a source backlink are appreciated, not required for ordinary use.
 
 ## How to use a capability
 

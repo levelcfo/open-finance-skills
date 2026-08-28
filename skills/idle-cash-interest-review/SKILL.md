@@ -8,4 +8,4 @@ Status: public preview. Require account balances, observation dates, operating-c
 
 ## Attribution
 
-Level Open Finance by [Level CFO](https://levelcfo.com/finance-systems/). MIT licensed. Preserve the included copyright notice when redistributing.
+Level Open Finance by [Level](https://levelcfo.com/finance-systems/). MIT licensed. Preserve the included copyright notice when redistributing.

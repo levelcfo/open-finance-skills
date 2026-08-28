@@ -1,9 +1,8 @@
 {
   "name": "Level Open Finance",
   "version": "0.2.0",
-  "sourceCommit": "AR-BO-AI 27faf778",
   "license": "MIT",
-  "attribution": "Level Open Finance by Level CFO",
+  "attribution": "Level Open Finance by Level",
   "citation": "https://levelcfo.com/finance-systems/",
   "privacy": "Synthetic examples and reusable finance logic only. No client data or private configuration.",
   "skills": [

@@ -8,4 +8,4 @@ Normalize vendors, aggregate a defined period, and calculate vendor, category, a
 
 ## Attribution
 
-Level Open Finance by [Level CFO](https://levelcfo.com/finance-systems/). MIT licensed. Preserve the included copyright notice when redistributing.
+Level Open Finance by [Level](https://levelcfo.com/finance-systems/). MIT licensed. Preserve the included copyright notice when redistributing.

@@ -8,4 +8,4 @@ Require a stated period, account, ledger population, and independent control sou
 
 ## Attribution
 
-Level Open Finance by [Level CFO](https://levelcfo.com/finance-systems/). MIT licensed. Preserve the included copyright notice when redistributing.
+Level Open Finance by [Level](https://levelcfo.com/finance-systems/). MIT licensed. Preserve the included copyright notice when redistributing.

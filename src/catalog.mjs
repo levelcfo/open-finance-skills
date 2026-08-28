@@ -10,7 +10,7 @@ const names = {
 export const capabilities = manifest.skills.map((slug) => ({
   slug, name:names[slug], version:manifest.version, status:manifest.preview.includes(slug)?"preview":"available",
   scope:"Synthetic examples only", limitation:"Requires human finance review", license:"MIT",
-  attribution:"Level Open Finance by Level CFO", citation:"https://levelcfo.com/finance-systems/",
+  attribution:"Level Open Finance by Level", citation:"https://levelcfo.com/finance-systems/",
   unit:"Declared by each result field", source:"https://levelcfo.com/finance-systems/",
   skill:`skills/${slug}/SKILL.md`, example:`examples/index.json#${slug}`
 }));

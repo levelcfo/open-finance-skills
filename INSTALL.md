@@ -19,3 +19,5 @@ Each skill is plain Markdown with YAML frontmatter. Agents that support instruct
 Run `npm install`, then `npm run dev`. The local endpoint is `http://127.0.0.1:8788/mcp`. It exposes public, read-only catalog and synthetic-example tools. It does not connect to accounting systems or client data.
 
 When you redistribute the package, preserve `LICENSE` and `ATTRIBUTION.md`. Citation and backlinks are appreciated using `CITATION.cff`, but they are not a condition on ordinary use.
+
+The MCP accepts only a capability slug, not financial records. `run_synthetic_example` returns the checked-in expected result, with no calculation on supplied data. Available and preview describe installed instruction packages, not live accounting integrations.

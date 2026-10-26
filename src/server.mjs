@@ -1,5 +1,6 @@
 import http from "node:http";
-import { capabilities, examples, runSynthetic } from "./catalog.mjs";
+import { pathToFileURL } from "node:url";
+import { capabilities, examples, runSynthetic, manifest } from "./catalog.mjs";
 
 const MAX_BODY = 16_384;
 const ALLOWED_HOSTS = new Set(["127.0.0.1:8788", "localhost:8788"]);
@@ -13,7 +14,7 @@ const tools = toolNames.map((name) => {
   const requiresSlug = toolsWithSlug.has(name);
   return {
     name,
-    description: `Read Level Open Finance ${name.replaceAll("_", " ")} data from Level. Synthetic examples only. Final decisions require human finance review. Source: https://levelcfo.com/finance-systems/`,
+    description: `${name === "run_synthetic_example" ? "Return the frozen expected result; does not calculate on new records. " : ""}Read Level Open Finance ${name.replaceAll("_", " ")} data from Level. Synthetic examples only. Final decisions require human finance review. Source: https://levelcfo.com/finance-systems/`,
     inputSchema: {
       type: "object",
       properties: requiresSlug ? { slug: { type: "string", pattern: SLUG_PATTERN } } : {},
@@ -80,7 +81,12 @@ export function createServer({ allowedHosts = ALLOWED_HOSTS, allowedOrigins = AL
       if (!body || typeof body !== "object" || Array.isArray(body) || body.jsonrpc !== "2.0") return error(res, body?.id ?? null, -32600, "invalid request", origin);
 
       const { id = null, method, params = {} } = body;
-      if (method === "initialize") return reply(res, 200, { jsonrpc: "2.0", id, result: { protocolVersion: "2025-06-18", capabilities: { tools: {} }, serverInfo: { name: "level-open-finance-systems", version: "0.2.0" } } }, origin);
+      if (method === "notifications/initialized" && !Object.hasOwn(body, "id")) {
+        res.writeHead(202, headers(origin));
+        return res.end();
+      }
+      if (method === "ping" && Object.hasOwn(body, "id")) return reply(res, 200, { jsonrpc: "2.0", id, result: {} }, origin);
+      if (method === "initialize") return reply(res, 200, { jsonrpc: "2.0", id, result: { protocolVersion: "2025-06-18", capabilities: { tools: {} }, serverInfo: { name: "level-open-finance-systems", version: manifest.version } } }, origin);
       if (method === "tools/list") return reply(res, 200, { jsonrpc: "2.0", id, result: { tools } }, origin);
       if (method !== "tools/call") return error(res, id, -32601, "unknown method", origin);
       if (!params || typeof params !== "object" || Array.isArray(params)) return error(res, id, -32602, "invalid arguments", origin);
@@ -96,12 +102,12 @@ export function createServer({ allowedHosts = ALLOWED_HOSTS, allowedOrigins = AL
       try {
         let out;
         if (name === "list_capabilities") out = capabilities;
-        else if (name === "get_release_notes") out = { version: "0.2.0", notes: "Twenty Level finance skills. Synthetic examples only. MIT licensed." };
+        else if (name === "get_release_notes") out = { version: manifest.version, notes: "0.2.1 corrects the idle-cash eligibility example and supplies all thirteen forecast weeks. Twenty skills preserved, three preview statuses unchanged. Local initialized-notification and ping responses supported. Synthetic MCP results remain frozen expected examples, not execution on new records. MIT licensed." };
         else {
           const capability = capabilities.find(({ slug }) => slug === args.slug);
           if (!capability) throw new Error("unknown capability");
           if (name === "get_capability") out = capability;
-          else if (name === "get_schema") out = { slug: capability.slug, input: "Synthetic JSON object", output: "Structured review result", missingValues: "Preserved as null, never coerced to zero", license: "MIT", attribution: "Level Open Finance by Level", source: "https://levelcfo.com/finance-systems/" };
+          else if (name === "get_schema") out = { slug: capability.slug, input: "Tool arguments contain only slug; no records accepted", output: "Checked-in synthetic fixture or frozen expected result", acceptsNewRecords: false, calculationExecuted: false, missingValues: "Null values in the checked-in fixture remain null; this is not a general record-validation promise", license: "MIT", attribution: "Level Open Finance by Level", source: "https://levelcfo.com/finance-systems/" };
           else if (name === "get_synthetic_example") out = examples[capability.slug];
           else out = runSynthetic(capability.slug);
         }
@@ -113,4 +119,4 @@ export function createServer({ allowedHosts = ALLOWED_HOSTS, allowedOrigins = AL
   });
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) createServer().listen(8788, "127.0.0.1", () => console.log("MCP dev server: http://127.0.0.1:8788/mcp"));
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) createServer().listen(8788, "127.0.0.1", () => console.log("MCP dev server: http://127.0.0.1:8788/mcp"));

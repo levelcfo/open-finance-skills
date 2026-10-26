@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 
-const manifest = JSON.parse(readFileSync(new URL("../catalog.json", import.meta.url), "utf8"));
+export const manifest = JSON.parse(readFileSync(new URL("../catalog.json", import.meta.url), "utf8"));
 export const examples = JSON.parse(readFileSync(new URL("../examples/index.json", import.meta.url), "utf8"));
 
 const names = {
@@ -18,5 +18,5 @@ export const capabilities = manifest.skills.map((slug) => ({
 export function runSynthetic(slug) {
   const example=examples[slug];
   if(!example) throw new Error("unknown capability");
-  return { slug, executionMode:"frozen-synthetic-demonstration", ...example.expected };
+  return { ...example.expected, slug, version: manifest.version, capabilityStatus: capabilities.find((capability) => capability.slug === slug).status, executionMode: "frozen-synthetic-demonstration", calculationExecuted: false, acceptsNewRecords: false, scope: "Returns the checked-in invented expected result. No supplied records are processed; this example does not establish complete ledger or source coverage.", unit: "Cash, cost and interest fields are fictional USD; ratios are fractions unless a field states percentage points or weeks.", source: "https://levelcfo.com/finance-systems/", license: "MIT", attribution: "Level Open Finance by Level" };
 }

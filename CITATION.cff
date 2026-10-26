@@ -5,8 +5,7 @@ type: software
 authors:
   - family-names: "Yang"
     given-names: "Sam"
-version: 0.2.0
-date-released: 2026-08-28
+version: 0.2.1
 url: "https://levelcfo.com/finance-systems/"
 repository-code: "https://github.com/levelcfo/open-finance-skills"
 license: MIT

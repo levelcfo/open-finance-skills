@@ -1,1 +1,28 @@
-{"name":"@levelcfo/open-finance-skills","version":"0.2.0","description":"Twenty inspectable finance skills from Level, with synthetic examples and a read-only MCP server.","license":"MIT","author":"Level","homepage":"https://levelcfo.com/finance-systems/","type":"module","files":["SKILL.md","skills","examples","src","README.md","INSTALL.md","ATTRIBUTION.md","CITATION.cff","LICENSE"],"scripts":{"dev":"node src/server.mjs","test":"node --test test/*.test.mjs","release":"sh scripts/build-release.sh"}}
+{
+  "name": "@levelcfo/open-finance-skills",
+  "version": "0.2.1",
+  "description": "Twenty inspectable finance skills from Level, with synthetic examples and a read-only MCP server.",
+  "license": "MIT",
+  "author": "Level",
+  "homepage": "https://levelcfo.com/finance-systems/",
+  "type": "module",
+  "files": [
+    "SKILL.md",
+    "catalog.json",
+    "skills",
+    "examples",
+    "src",
+    "README.md",
+    "INSTALL.md",
+    "ATTRIBUTION.md",
+    "CITATION.cff",
+    "LICENSE",
+    "test",
+    "scripts"
+  ],
+  "scripts": {
+    "dev": "node src/server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "release": "sh scripts/build-release.sh"
+  }
+}

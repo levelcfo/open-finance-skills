@@ -1,22 +1,379 @@
 {
-  "reconcile-account":{"input":{"bankAmount":12480,"ledgerAmount":12840},"expected":{"variance":-360,"status":"review"}},
-  "duplicate-billing":{"input":{"records":["AP-881","AP-914"],"sameInvoiceNumber":true},"expected":{"probableDuplicate":true,"status":"review"}},
-  "revenue-leakage-review":{"input":{"completedValue":6400,"invoice":null},"expected":{"unbilledCandidate":6400,"status":"review"}},
-  "spend-concentration-review":{"input":{"topVendorSpend":72000,"totalSpend":120000},"expected":{"topVendorShare":0.6,"status":"review"}},
-  "margin-trend-review":{"input":{"priorRevenue":100000,"priorCost":60000,"currentRevenue":110000,"currentCost":71500},"expected":{"priorMargin":0.4,"currentMargin":0.35,"changePoints":-5,"status":"review"}},
-  "cost-detail-footing":{"input":{"detail":[3000,2000],"controlTotal":5100},"expected":{"detailTotal":5000,"variance":-100,"status":"review"}},
-  "vendor-1099-readiness":{"input":{"payments":1200,"taxId":null},"expected":{"missingFields":["taxId"],"status":"review"}},
-  "monthly-value-summary":{"input":{"revenueChange":10000,"marginChangePoints":-5,"cashChange":-10000},"expected":{"findingCount":3,"status":"review"}},
-  "monthly-variance-review":{"input":{"actual":18400,"budget":12000},"expected":{"variance":6400,"variancePct":0.5333,"status":"review"}},
-  "recurring-subscription-review":{"input":{"monthlyCharges":[1250,790,240]},"expected":{"monthlySpend":2280,"annualizedSpend":27360,"status":"review"}},
-  "idle-cash-interest-review":{"input":{"observedCash":620000,"buffer":200000,"illustrativeYield":0.04},"expected":{"illustrativeEligibleBalance":420000,"illustrativeAnnualInterest":16800,"status":"review"}},
-  "cash-flow-forecast":{"input":{"managementBuffer":100000,"weeklyEndingCash":[193000,168000,156000,121000,83000,98000]},"expected":{"lowestCash":83000,"belowBuffer":17000,"status":"review"}},
-  "ar-integrity-review":{"input":{"invoiceTotal":12000,"payments":9500,"workflowStatus":"closed"},"expected":{"computedBalance":2500,"statusConflict":true,"status":"review"}},
-  "cost-rationalization-review":{"input":{"annualizedCandidates":[24000,18000]},"expected":{"reviewPool":42000,"confirmedSavings":0,"status":"review"}},
-  "vendor-rule-audit":{"input":{"transactions":84,"overrides":19},"expected":{"overrideRate":0.2262,"stable":false,"status":"review"}},
-  "remittance-matching-review":{"input":{"remittanceAmount":18750,"depositAmount":18625},"expected":{"variance":125,"match":"partial","status":"review"}},
-  "customer-margin-attribution":{"input":{"directLabor":180000,"attributedLabor":126000},"expected":{"unattributedLabor":54000,"coverage":0.7,"status":"review"}},
-  "month-end-close-preview":{"input":{"blocked":2,"unknown":1,"ready":1},"expected":{"closeReady":false,"status":"blocked"}},
-  "cfo-chart-pack":{"input":{"cash":[180000,132000,86000],"periodTypes":["actual","actual","forecast"]},"expected":{"lowestCash":86000,"seriesCount":1,"status":"review"}},
-  "categorization-history-health":{"input":{"transactions":62,"consistent":38},"expected":{"consistency":0.6129,"automationReady":false,"status":"review"}}
+  "reconcile-account": {
+    "input": {
+      "bankAmount": 12480,
+      "ledgerAmount": 12840
+    },
+    "expected": {
+      "variance": -360,
+      "status": "review"
+    }
+  },
+  "duplicate-billing": {
+    "input": {
+      "records": [
+        "AP-881",
+        "AP-914"
+      ],
+      "sameInvoiceNumber": true
+    },
+    "expected": {
+      "probableDuplicate": true,
+      "status": "review"
+    }
+  },
+  "revenue-leakage-review": {
+    "input": {
+      "completedValue": 6400,
+      "invoice": null
+    },
+    "expected": {
+      "unbilledCandidate": 6400,
+      "status": "review"
+    }
+  },
+  "spend-concentration-review": {
+    "input": {
+      "topVendorSpend": 72000,
+      "totalSpend": 120000
+    },
+    "expected": {
+      "topVendorShare": 0.6,
+      "status": "review"
+    }
+  },
+  "margin-trend-review": {
+    "input": {
+      "priorRevenue": 100000,
+      "priorCost": 60000,
+      "currentRevenue": 110000,
+      "currentCost": 71500
+    },
+    "expected": {
+      "priorMargin": 0.4,
+      "currentMargin": 0.35,
+      "changePoints": -5,
+      "status": "review"
+    }
+  },
+  "cost-detail-footing": {
+    "input": {
+      "detail": [
+        3000,
+        2000
+      ],
+      "controlTotal": 5100
+    },
+    "expected": {
+      "detailTotal": 5000,
+      "variance": -100,
+      "status": "review"
+    }
+  },
+  "vendor-1099-readiness": {
+    "input": {
+      "payments": 1200,
+      "taxId": null
+    },
+    "expected": {
+      "missingFields": [
+        "taxId"
+      ],
+      "status": "review"
+    }
+  },
+  "monthly-value-summary": {
+    "input": {
+      "revenueChange": 10000,
+      "marginChangePoints": -5,
+      "cashChange": -10000
+    },
+    "expected": {
+      "findingCount": 3,
+      "status": "review"
+    }
+  },
+  "monthly-variance-review": {
+    "input": {
+      "actual": 18400,
+      "budget": 12000
+    },
+    "expected": {
+      "variance": 6400,
+      "variancePct": 0.5333,
+      "status": "review"
+    }
+  },
+  "recurring-subscription-review": {
+    "input": {
+      "monthlyCharges": [
+        1250,
+        790,
+        240
+      ]
+    },
+    "expected": {
+      "monthlySpend": 2280,
+      "annualizedSpend": 27360,
+      "status": "review"
+    }
+  },
+  "idle-cash-interest-review": {
+    "input": {
+      "observedCash": 620000,
+      "observationDays": 90,
+      "observationWindowEnd": null,
+      "buffer": 200000,
+      "lowestForecastUnrestrictedCash": null,
+      "illustrativeYield": 0.04,
+      "yieldSourceDate": null,
+      "illustrativeHoldingDays": 365,
+      "averagingBasis": "Fictional average cash over 90 days, not guaranteed daily liquidity"
+    },
+    "expected": {
+      "conditionalScenarioBalance": 420000,
+      "confirmedEligibleBalance": null,
+      "illustrativeAnnualInterest": 16800,
+      "interestBasis": "Conditional full-year simple-interest scenario, not eligible funds or a return forecast",
+      "status": "review"
+    },
+    "counterexample": {
+      "input": {
+        "observedCash": 620000,
+        "buffer": 200000,
+        "lowestForecastUnrestrictedCash": 150000,
+        "illustrativeYield": 0.04,
+        "illustrativeHoldingDays": 365
+      },
+      "expected": {
+        "conditionalScenarioBalance": 420000,
+        "bufferShortfall": 50000,
+        "illustrativeAnnualInterest": 16800,
+        "eligibleScenarioInterest": 0,
+        "status": "review",
+        "eligibleBalanceUnderIllustrativePolicy": 0,
+        "interestBasis": "Conditional $420,000 times assumed 4% for a full year; policy surplus and its interest are zero"
+      }
+    }
+  },
+  "cash-flow-forecast": {
+    "input": {
+      "managementBuffer": 100000,
+      "scenario": "Fictional base scenario; every weekly amount is a forecast assumption",
+      "weeks": [
+        {
+          "week": 1,
+          "startingCash": 180000,
+          "inflows": 95000,
+          "outflows": 82000,
+          "endingCash": 193000
+        },
+        {
+          "week": 2,
+          "startingCash": 193000,
+          "inflows": 80000,
+          "outflows": 95000,
+          "endingCash": 178000
+        },
+        {
+          "week": 3,
+          "startingCash": 178000,
+          "inflows": 85000,
+          "outflows": 90000,
+          "endingCash": 173000
+        },
+        {
+          "week": 4,
+          "startingCash": 173000,
+          "inflows": 78000,
+          "outflows": 95000,
+          "endingCash": 156000
+        },
+        {
+          "week": 5,
+          "startingCash": 156000,
+          "inflows": 48000,
+          "outflows": 121000,
+          "endingCash": 83000
+        },
+        {
+          "week": 6,
+          "startingCash": 83000,
+          "inflows": 100000,
+          "outflows": 82000,
+          "endingCash": 101000
+        },
+        {
+          "week": 7,
+          "startingCash": 101000,
+          "inflows": 95000,
+          "outflows": 88000,
+          "endingCash": 108000
+        },
+        {
+          "week": 8,
+          "startingCash": 108000,
+          "inflows": 110000,
+          "outflows": 85000,
+          "endingCash": 133000
+        },
+        {
+          "week": 9,
+          "startingCash": 133000,
+          "inflows": 90000,
+          "outflows": 94000,
+          "endingCash": 129000
+        },
+        {
+          "week": 10,
+          "startingCash": 129000,
+          "inflows": 105000,
+          "outflows": 89000,
+          "endingCash": 145000
+        },
+        {
+          "week": 11,
+          "startingCash": 145000,
+          "inflows": 80000,
+          "outflows": 91000,
+          "endingCash": 134000
+        },
+        {
+          "week": 12,
+          "startingCash": 134000,
+          "inflows": 98000,
+          "outflows": 90000,
+          "endingCash": 142000
+        },
+        {
+          "week": 13,
+          "startingCash": 142000,
+          "inflows": 88000,
+          "outflows": 76000,
+          "endingCash": 154000
+        }
+      ],
+      "weeklyEndingCash": [
+        193000,
+        178000,
+        173000,
+        156000,
+        83000,
+        101000,
+        108000,
+        133000,
+        129000,
+        145000,
+        134000,
+        142000,
+        154000
+      ]
+    },
+    "expected": {
+      "horizonWeeks": 13,
+      "lowestCash": 83000,
+      "lowestWeek": 5,
+      "belowBuffer": 17000,
+      "status": "review"
+    }
+  },
+  "ar-integrity-review": {
+    "input": {
+      "invoiceTotal": 12000,
+      "payments": 9500,
+      "workflowStatus": "closed"
+    },
+    "expected": {
+      "computedBalance": 2500,
+      "statusConflict": true,
+      "status": "review"
+    }
+  },
+  "cost-rationalization-review": {
+    "input": {
+      "annualizedCandidates": [
+        24000,
+        18000
+      ]
+    },
+    "expected": {
+      "reviewPool": 42000,
+      "confirmedSavings": 0,
+      "status": "review"
+    }
+  },
+  "vendor-rule-audit": {
+    "input": {
+      "transactions": 84,
+      "overrides": 19
+    },
+    "expected": {
+      "overrideRate": 0.2262,
+      "stable": false,
+      "status": "review"
+    }
+  },
+  "remittance-matching-review": {
+    "input": {
+      "remittanceAmount": 18750,
+      "depositAmount": 18625
+    },
+    "expected": {
+      "variance": 125,
+      "match": "partial",
+      "status": "review"
+    }
+  },
+  "customer-margin-attribution": {
+    "input": {
+      "directLabor": 180000,
+      "attributedLabor": 126000
+    },
+    "expected": {
+      "unattributedLabor": 54000,
+      "coverage": 0.7,
+      "status": "review"
+    }
+  },
+  "month-end-close-preview": {
+    "input": {
+      "blocked": 2,
+      "unknown": 1,
+      "ready": 1
+    },
+    "expected": {
+      "closeReady": false,
+      "status": "blocked"
+    }
+  },
+  "cfo-chart-pack": {
+    "input": {
+      "cash": [
+        180000,
+        132000,
+        86000
+      ],
+      "periodTypes": [
+        "actual",
+        "actual",
+        "forecast"
+      ]
+    },
+    "expected": {
+      "lowestCash": 86000,
+      "seriesCount": 1,
+      "status": "review"
+    }
+  },
+  "categorization-history-health": {
+    "input": {
+      "transactions": 62,
+      "consistent": 38
+    },
+    "expected": {
+      "consistency": 0.6129,
+      "automationReady": false,
+      "status": "review"
+    }
+  }
 }

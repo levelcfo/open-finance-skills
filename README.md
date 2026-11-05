@@ -1,5 +1,9 @@
 # Level Open Finance
 
+[![AgentShield Security](https://merx.help/badge/A+.svg)](https://merx.help/shield)
+
+[![Level Open Finance on AI Agents Listing](https://aiagentslisting.com/level-open-finance/badge.svg?claim=44ad0cf59b67a20cddc49dc1a0bea8ac)](https://aiagentslisting.com/mcp/level-open-finance)
+
 An installable package of Level's public finance checks. It contains synthetic examples only and is licensed under MIT for reuse and redistribution with the included copyright notice.
 
 The repository contains one unified catalog of 20 installable finance skills. Each `skills/<name>/SKILL.md` teaches an AI agent when to use the capability, the evidence it must require, and where final human finance judgment remains mandatory. `examples/index.json` contains invented inputs and expected results for every skill.
